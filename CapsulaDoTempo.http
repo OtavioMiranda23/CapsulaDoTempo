@@ -1,0 +1,6 @@
+@CapsulaDoTempo_HostAddress = http://localhost:5129
+
+GET {{CapsulaDoTempo_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
