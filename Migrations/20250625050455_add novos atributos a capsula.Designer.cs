@@ -3,6 +3,7 @@ using System;
 using CapsulaDoTempo.DbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CapsulaDoTempo.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250625050455_add novos atributos a capsula")]
+    partial class addnovosatributosacapsula
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.6");
@@ -44,25 +47,6 @@ namespace CapsulaDoTempo.Migrations
                     b.HasKey("Uuid");
 
                     b.ToTable("Capsula");
-                });
-
-            modelBuilder.Entity("CapsulaDoTempo.Entities.CapsulaModel", b =>
-                {
-                    b.OwnsOne("CapsulaDoTempo.Entities.ValueObjects.Email", "Email", b1 =>
-                        {
-                            b1.Property<Guid>("CapsulaModelUuid")
-                                .HasColumnType("TEXT");
-
-                            b1.HasKey("CapsulaModelUuid");
-
-                            b1.ToTable("Capsula");
-
-                            b1.WithOwner()
-                                .HasForeignKey("CapsulaModelUuid");
-                        });
-
-                    b.Navigation("Email")
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

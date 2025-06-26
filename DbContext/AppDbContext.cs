@@ -13,6 +13,7 @@ public class AppDbContext : Microsoft.EntityFrameworkCore.DbContext
         builder.Entity<CapsulaModel>().HasKey(m => m.Uuid);
         builder.Entity<CapsulaModel>().Property(m => m.CreatedAt)
             .HasDefaultValueSql("GETDATE()");
+        builder.Entity<CapsulaModel>().OwnsOne(m => m.Email);
         base.OnModelCreating(builder);
     }
 }
