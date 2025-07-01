@@ -35,6 +35,10 @@ namespace CapsulaDoTempo.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("PathImage")
                         .HasColumnType("TEXT");
 

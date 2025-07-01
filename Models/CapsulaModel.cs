@@ -8,6 +8,8 @@ namespace CapsulaDoTempo.Entities;
 public class CapsulaModel
 {
     public Guid Uuid { get; set; }
+    [Required(ErrorMessage = "Name is required.")]
+    public string Name { get; set; }
     [Required(ErrorMessage = "Message is required.")]
     public string Message { get; set; }
     [Required(ErrorMessage = "Email is required.")]
@@ -19,8 +21,9 @@ public class CapsulaModel
     public DateTime? UpdatedAt { get; set; }
     private CapsulaModel(){}
 
-    public CapsulaModel(string message, string emailAddress)
+    public CapsulaModel(string name, string message, string emailAddress)
     {
+      Name = name;
       var email = new Email(emailAddress);
       Email = email;
       Message = message;

@@ -9,10 +9,11 @@ public class CapsulaModelUnit
     [Fact]
     public void SuccessCreateModel()
     {
+        var name = "John";
         var message = "Mensagem de teste";
         var expectPathImage = "/home/otavio/RiderProjects/CapsulaDoTempo/CapsulaDoTempo/public/upload/image/test.png";
         var emailAddress = "teste@gmail.com";
-        var capsula = new CapsulaModel(message, emailAddress);
+        var capsula = new CapsulaModel(name, message, emailAddress);
         var dateToSend = DateTime.Now.AddDays(1);
         capsula.SetDateTimeToSend(dateToSend);
         capsula.SetPathImage("test.png");
@@ -23,10 +24,11 @@ public class CapsulaModelUnit
     [Fact]
     public void InvalidFieldsCreateModel()
     {
+        var name = "John";
         var message = "Mensagem de teste";
         var emailAddress = "teste@gmail.com";
         var oldDate = new DateTime(2011, 1, 1);
-        var capsula = new CapsulaModel(message, emailAddress);
+        var capsula = new CapsulaModel(name, message, emailAddress);
         Assert.Throws<ArgumentOutOfRangeException>(() => capsula.SetPathImage("test.pnng"));
         Assert.Throws<ArgumentOutOfRangeException>(() => capsula.SetDateTimeToSend(oldDate));
     }
@@ -34,9 +36,10 @@ public class CapsulaModelUnit
     [Fact]
     public void InvalidEmailCreateModel()
     {
+        var name = "John";
         var message = "Mensagem de teste";
         var emailAddress = "teste@gmailcom";
-        Assert.Throws<ValidationException>(() => new CapsulaModel(message, emailAddress));
+        Assert.Throws<ValidationException>(() => new CapsulaModel(name, message, emailAddress));
     }
 
 }
