@@ -1,9 +1,13 @@
 using CapsulaDoTempo.DbContext;
 using CapsulaDoTempo.Services;
 using CapsulaDoTempo.Services.Adapters;
+using Hangfire;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddHangfire(x => x.UseSqlServerStorage(
+    builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var keyMailJet = builder.Configuration["MailJet:SecretKey"];
 var secretMailJet = builder.Configuration["MailJet:ApiKey"];

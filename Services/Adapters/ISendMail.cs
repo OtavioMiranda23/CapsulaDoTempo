@@ -1,6 +1,6 @@
 namespace CapsulaDoTempo.Services.Adapters;
 
-public interface ISendMail<T>
+public interface ISendMail
 {
-  Task<T> SendEmail(string from, string to, string subject, string body);
+  Task SendEmail(string from, string to, string subject, string body);
 }

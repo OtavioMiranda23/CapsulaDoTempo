@@ -7,7 +7,7 @@ using Microsoft.Extensions.Options;
 
 namespace CapsulaDoTempo.Services.Adapters;
 
-public class MailJetAdapter : ISendMail<TransactionalEmailResponse>
+public class MailJetAdapter : ISendMail
 {
   private MailjetClient Client;
   public MailJetAdapter(MailJetSettings settings)
@@ -15,7 +15,7 @@ public class MailJetAdapter : ISendMail<TransactionalEmailResponse>
     Client = new MailjetClient(settings.ApiKey, settings.SecretKey);
   }
 
-  public Task<TransactionalEmailResponse> SendEmail(string from, string subject, string to, string body)
+  public Task SendEmail(string from, string subject, string to, string body)
   {
     var toContact = new SendContact(to);
     MailjetRequest request = new MailjetRequest
